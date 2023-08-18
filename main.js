@@ -4,6 +4,56 @@ class Field {
   constructor(fieldArray) {
     this.field = fieldArray;
     this.currentPosition = { row: 0, col: 0 };
+    this.generateHat();
+    this.hardModeTurns = 5; // Number of turns after which new holes are added
+  }
+
+generateHat() {
+    // Clear any existing hats
+    for (let i = 0; i < this.field.length; i++) {
+      for (let j = 0; j < this.field[0].length; j++) {
+        if (this.field[i][j] === '^') {
+          this.field[i][j] = '░';
+        }
+      }
+    }
+
+    // Find a valid location for the hat
+    let hatPlaced = false;
+    let attempts = 0;
+    const totalTiles = this.field.length * this.field[0].length;
+
+    while (!hatPlaced && attempts < totalTiles) {
+      const row = Math.floor(Math.random() * this.field.length);
+      const col = Math.floor(Math.random() * this.field[0].length);
+
+      if (this.field[row][col] !== 'O') {
+        this.field[row][col] = '^';
+        hatPlaced = true;
+      }
+
+      attempts++;
+    }
+
+    if (!hatPlaced) {
+      console.log("Failed to place hat. Please regenerate the field.");
+    }
+  }
+
+
+
+  generateHole() {
+    let holePlaced = false;
+    while (!holePlaced) {
+      const row = Math.floor(Math.random() * this.field.length);
+      const col = Math.floor(Math.random() * this.field[0].length);
+
+      if (this.field[row][col] !== 'O' && this.field[row][col] !== '^' &&
+          (row !== 0 || col !== 0)) {
+        this.field[row][col] = 'O';
+        holePlaced = true;
+      }
+    }
   }
 
   static generateField(height, width, holePercentage) {
@@ -83,12 +133,22 @@ class Field {
 
   playGame() {
     let playing = true;
+    let turns = 0;
+
     while (playing) {
       this.print();
       const direction = prompt('Which direction do you want to move? (w/a/s/d): ');
 
       if (direction === 'w' || direction === 'a' || direction === 's' || direction === 'd') {
         this.move(direction);
+
+        turns++;
+
+        if (turns === this.hardModeTurns) {
+          this.generateHole();
+          console.log('Hard mode activated! A new hole has been added to the field.');
+          turns = 0; // Reset turns counter
+        }
 
         if (!this.isInBounds()) {
           console.log('Oops! You moved outside the field. Game over!');
@@ -118,9 +178,5 @@ console.log(randomField);
 
 // Start the game
 const myField = new Field(randomField);
+myField.generateHat(); // Generate the hat here, only once
 myField.playGame();
-
-
- 
-
- 
