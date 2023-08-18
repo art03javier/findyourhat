@@ -2,80 +2,54 @@
 Codecademy Find your Hat Challenge Project
 # Find Your Hat Game
 
-Welcome to the "Find Your Hat" game! This project is a simple text-based game where you navigate through a field to find your hat while avoiding holes. The game is played using the command line interface.
+A simple terminal-based game where you have to navigate through a field filled with holes and obstacles to find your hat.
 
-## Installation
+## Overview
 
-1. Make sure you have Node.js installed on your machine.
-2. Clone or download this repository to your local machine.
-3. Open a terminal and navigate to the project directory.
+In this game, you'll start at the upper-left corner of a field and your goal is to find your hat (^) while avoiding holes (O) and staying within the boundaries of the field.
 
-## How to Play
+### Game Rules
 
-1. Run the game using the command: `node main.js`
-2. You'll be presented with a grid representing the field. You start at the top-left corner (*) and your goal is to find the hat (^).
-3. Input directions (w, a, s, d) to move the player character (*).
-4. Avoid falling into holes (O) and make sure you stay within the field boundaries.
-5. The game ends when you find your hat, fall into a hole, or move outside the field.
+1. Use the following commands to move:
+   - `w` to move up
+   - `s` to move down
+   - `a` to move left
+   - `d` to move right
 
-## Customization
+2. As you move, the `*` symbol represents your current position on the field.
 
-You can customize the game by modifying the `main.js` file. You can adjust the field dimensions and hole percentage by changing the parameters passed to the `Field.generateField()` method.
+3. The game ends in the following scenarios:
+   - You find your hat (^): Congratulations, you win!
+   - You fall into a hole (O): Oops, you lose!
+   - You move outside the field boundaries: Oops, you lose!
 
-## Example Field
+## Getting Started
 
-Here's an example of how a field might look:
+1. Clone this repository to your local machine.
 
-# Find Your Hat Game
+2. Navigate to the project directory in your terminal.
 
-Welcome to the "Find Your Hat" game! This project is a simple text-based game where you navigate through a field to find your hat while avoiding holes. The game is played using the command line interface.
+3. Run the game using the following command:
 
-## Installation
+   ```sh
+   node main.js
 
-1. Make sure you have Node.js installed on your machine.
-2. Clone or download this repository to your local machine.
-3. Open a terminal and navigate to the project directory.
+## Instructions
+Follow the on-screen instructions to play the game.
 
-## How to Play
+## Additional Features
+Feel free to customize and extend the game! Here are a few ideas:
 
-1. Run the game using the command: `node main.js`
-2. You'll be presented with a grid representing the field. You start at the top-left corner (*) and your goal is to find the hat (^).
-3. Input directions (w, a, s, d) to move the player character (*).
-4. Avoid falling into holes (O) and make sure you stay within the field boundaries.
-5. The game ends when you find your hat, fall into a hole, or move outside the field.
+- Start at a random location within the field.
+- Implement a "hard mode" with more holes added after certain turns.
+- Improve the game's graphics and interactivity using terminal packages.
+- Add a field validator to ensure generated fields are solvable.
 
-## Customization
+## Authors
+[Arthur Javier]
 
-You can customize the game by modifying the `main.js` file. You can adjust the field dimensions and hole percentage by changing the parameters passed to the `Field.generateField()` method.
+## Acknowledgements
+This project was inspired by the Codecademy Learn JavaScript course.
 
-## Example Field
-
-Here's an example of how a field might look:
-
-*░░░^O░░░O
-░░░░░O░░░░
-░░░░░░░░░░
-O░░░░O░░░O
-░░░O░░░░OO
-░░░░░░░░░░
-░░O░░░░░OO
-O░░O░░░O░░
-░░░OO░░░O░
-░O░░░░O░░░
-
-
-Which direction do you want to move? (w/a/s/d):
-
-
-## Contributions
-
-This project is a simple example, but feel free to contribute by adding new features, improving the code, or suggesting enhancements.
-
-
-
-
-
-
-
-
-
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
